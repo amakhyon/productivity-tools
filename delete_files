@@ -1,0 +1,21 @@
+import os
+import re
+
+
+def delete(extension):
+	files = os.listdir()
+	for file in files:
+		path = os.getcwd()
+		path = path + '\\' + file
+		if os.path.isfile(path) : #make sure it's a file not a folder
+			file_extention = re.findall('\.\w+$',file)[0] #get file extention
+			print(file_extention)
+			file_extention = file_extention.strip('.')
+			print(file_extention)
+			if file_extention == extension:
+				print(file)
+				os.remove(file)
+				
+
+delete('spec')
+#delete(extension)

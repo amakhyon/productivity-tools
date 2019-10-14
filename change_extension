@@ -1,0 +1,14 @@
+import os 
+import re
+files = os.listdir()
+
+def change_extention(regular_expression,extention):
+	for file in files:
+		if re.match(regular_expression,file):
+			file_name = re.findall('\w+',file)[0] #get file name alone
+			original_extention = re.findall('\w+',file)[1] #get file extention alone
+			os.rename(file,file_name + "." + extention) #rename
+
+
+
+change_extention('\w+.p$','.py')

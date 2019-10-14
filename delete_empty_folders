@@ -1,0 +1,18 @@
+import os
+
+def delete():
+	files = os.listdir()
+	for file in files:
+		try:
+			path = os.getcwd()
+			path = path + '\\' + file
+			if os.path.isdir(path) : #make sure it's a file not a folder
+				print(file)
+				os.rmdir(file)
+		except PermissionError:
+			continue
+		except OSError:
+			continue
+				
+
+delete()

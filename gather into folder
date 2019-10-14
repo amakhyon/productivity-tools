@@ -1,0 +1,17 @@
+import os 
+import re
+import shutil
+
+#shutil.move(src,dst)
+def move_to(extension,folder):
+	path = os.getcwd()
+	files = os.listdir()
+	for file in files:
+		if re.match('\w+\.\w+',file): #make sure it's a file not a folder
+			file_extention = re.findall('\w+',file)[1] #get file extention
+			if file_extention == extension:
+				shutil.move(path + '\\' + file, path+ '\\' + folder)
+				
+
+move_to('py','bala7')
+#move_to(file_extension, destination folder)

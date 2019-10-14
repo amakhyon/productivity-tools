@@ -2,15 +2,17 @@ import os
 import re
 files = os.listdir()
 
-def change_extention(regular_expression,extention):
+def change_extention(old_extension,desired_extention):
 	for file in files:
-		if re.match(regular_expression,file):
-			file_name = re.findall('\w+',file)[0] #get file name alone
-			original_extention = re.findall('\w+',file)[1] #get file extention alone
-			os.rename(file,file_name + "." + extention) #rename
+		if re.match('\w+\.\w+',file):
+			file_extension = re.findall('\w+',file)[1]
+			if file_extension == old_extension:
+				file_name = re.findall('\w+',file)[0]
+				os.rename(file,file + '.' + desired_extention)
 
 
 
-change_extention('\w+.p$','.py')
-#change_extention( regular expression to match, desired format)
+change_extention('txt','py')
+
+#change_extention(file format, destination folder)
 #use regexr.com to test your regular expression first !

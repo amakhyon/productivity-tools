@@ -12,3 +12,5 @@ def change_extention(regular_expression,extention):
 
 
 change_extention('\w+.p$','.py')
+#change_extention( regular expression to match, desired format)
+#use regexr.com to test your regular expression first !

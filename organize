@@ -1,0 +1,58 @@
+
+
+
+
+#1- get all files extensions, store them in an array
+#2- extract types of extensions and put them in another array, make sure nothing is repeated
+#3- create a folder for every extension 
+#4- move every extension from array in step 1 to it's matched folder by name 
+
+import os 
+import shutil
+def get_files():
+	objects = os.listdir()
+	files = []
+	for obj in objects:
+		path = os.getcwd()
+		path = path + '\\' + obj
+		if os.path.isfile(path) :
+			files.append(obj)
+	return files
+
+def get_extension(file):
+	path = os.getcwd()
+	path = path + '\\' + file
+	filename, file_extension = os.path.splitext(path)
+	file_extension = file_extension.strip('.')
+	return file_extension
+
+def get_extensions(files = get_files()):
+	file_categories = []
+	for file in files:
+		file_extension = get_extension(file)
+		if file_extension not in file_categories:
+			file_categories.append(file_extension)
+	return file_categories
+
+
+
+def create_folders_for_extensions(extensions = get_extensions()):
+	for extension in extensions:
+		os.mkdir(extension)
+
+def move_each_file_to_folder():
+	files = get_files()
+	folders = get_extensions()
+	for file in files:
+		path = os.getcwd()
+		file_extention = get_extension(file)
+		shutil.move(path + '\\' + file, path+ '\\' + get_extension(file))
+		
+create_folders_for_extensions()
+move_each_file_to_folder()
+
+
+
+
+
+
